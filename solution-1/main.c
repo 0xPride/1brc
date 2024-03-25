@@ -1,7 +1,7 @@
-#include <stdint.h>
-#include <stdio.h>
 #include <fcntl.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <sys/types.h>
 
 typedef struct {
   char name[265];
@@ -9,6 +9,18 @@ typedef struct {
   int32_t max;
   int32_t average;
 } state_t;
+
+void read_and_process_data(FILE *file) {
+  // read data
+
+  char *line = NULL;
+  size_t count = 0;
+  ssize_t nread = -1;
+
+  while ((nread = getline(&line, &count, nread)) != -1) {
+    free(line);
+  }
+}
 
 int main(int argc, char **argv) {
   if (argc != 2) {
